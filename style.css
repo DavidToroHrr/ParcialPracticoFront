@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.kanban-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.columna {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 200px;
+    min-height: 300px;
+}
+
+.task-list {
+    min-height: 250px;
+}
+
+.task-item {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #333;
+    cursor: move;
+}
+
+.task-item.pending {
+    background-color: #ffcccc;
+    border-color: red;
+}
+
+.task-item.completed {
+    background-color: #ccffcc;
+    border-color: green;
+}
+
+#task-canvas {
+    border: 1px solid #000;
+}

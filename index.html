@@ -1,13 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Organizador de Tareas</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <h1>Organizador de Tareas</h1>
+    <p id="location-text">Obteniendo ubicación...</p>
+
+    <div>
+        <input type="text" id="task-input" placeholder="Nueva tarea..." />
+        <button id="add-task-btn">Agregar Tarea</button>
+    </div>
+
+    <div class="kanban-container">
+        <div class="columna" id="pending-column" data-status="pending">
+            <h3>Pendientes</h3>
+            <div class="task-list" id="pending-list"></div>
+        </div>
+        
+        <div class="columna" id="completed-column" data-status="completed">
+            <h3>Completadas</h3>
+            <div class="task-list" id="completed-list"></div>
+        </div>
+    </div>
+
+    <div>
+        <h3>Conteo de Tareas</h3>
+        <canvas id="task-canvas" width="300" height="150"></canvas>
+    </div>
+
+    <script src="app.js"></script>
 </body>
-<script src="app.js"></script>
 </html>
