@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskInput = document.getElementById('task-input');
     const addTaskBtn = document.getElementById('add-task-btn');
     const pendingList = document.getElementById('pending-list');
+    const inProgressList = document.getElementById('in-progress-list');
     const completedList = document.getElementById('completed-list');
     const locationText = document.getElementById('location-text');
     const canvas = document.getElementById('task-canvas');
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderTasks() {
         pendingList.innerHTML = '';
         completedList.innerHTML = '';
+        inProgressList.innerHTML = '';
 
         tasks.forEach(task => {
             const div = document.createElement('div');
@@ -43,8 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (task.status === 'pending') {
                 pendingList.appendChild(div);
-            } else {
+            } else if (task.status === 'completed') {
                 completedList.appendChild(div);
+            } else if (task.status === 'in-progress') {
+                inProgressList.appendChild(div);
             }
         });
 
@@ -54,7 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Configurar drop en las columnas
     const columnas = [
         document.getElementById('pending-column'), 
-        document.getElementById('completed-column')
+        document.getElementById('completed-column'),
+        document.getElementById('in-progress-column')
     ];
     
     columnas.forEach(col => {
@@ -81,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         let pending = tasks.filter(t => t.status === 'pending').length;
         let completed = tasks.filter(t => t.status === 'completed').length;
+        let inProgress = tasks.filter(t => t.status === 'in-progress').length;
 
         // Círculo para pendientes
         ctx.beginPath();
@@ -91,13 +97,25 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.font = '14px Arial';
         ctx.fillText("Pendientes: " + pending, 20, 130);
 
-        // Círculo para completadas
+
+        //circulo para en en progreso
         ctx.beginPath();
         ctx.arc(220, 70, 30, 0, 2 * Math.PI);
+        ctx.fillStyle = 'yellow';
+        ctx.fill();
+        ctx.fillStyle = 'black';
+        ctx.fillText("En Progreso: " + inProgress, 175, 130);
+
+        // Círculo para completadas
+        ctx.beginPath();
+        ctx.arc(370, 70, 30, 0, 2 * Math.PI);
         ctx.fillStyle = 'green';
         ctx.fill();
         ctx.fillStyle = 'black';
-        ctx.fillText("Completas: " + completed, 175, 130);
+        ctx.fillText("Completas: " + completed, 325, 130);
+
+        
+
     }
 
     // Evento para agregar nueva tarea
