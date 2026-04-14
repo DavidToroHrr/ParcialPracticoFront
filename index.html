@@ -7,30 +7,33 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <h1>Organizador de Tareas</h1>
+
+    <!-- Ubicación -->
     <p id="location-text">Obteniendo ubicación...</p>
 
+    <!-- Formulario para agregar tarea -->
     <div>
-        <input type="text" id="task-input" placeholder="Nueva tarea..." />
-        <button id="add-task-btn">Agregar Tarea</button>
+        <input type="text" id="task-input" placeholder="Nueva tarea...">
+        <button id="add-task-btn">Agregar</button>
     </div>
 
+    <!-- Kanban: dos columnas lado a lado -->
     <div class="kanban-container">
-        <div class="columna" id="pending-column" data-status="pending">
+        <div id="pending-column" class="columna" data-status="pending">
             <h3>Pendientes</h3>
-            <div class="task-list" id="pending-list"></div>
+            <div id="pending-list" class="task-list"></div>
         </div>
-        
-        <div class="columna" id="completed-column" data-status="completed">
+
+        <div id="completed-column" class="columna" data-status="completed">
             <h3>Completadas</h3>
-            <div class="task-list" id="completed-list"></div>
+            <div id="completed-list" class="task-list"></div>
         </div>
     </div>
 
-    <div>
-        <h3>Conteo de Tareas</h3>
-        <canvas id="task-canvas" width="300" height="150"></canvas>
-    </div>
+    <!-- Canvas -->
+    <canvas id="task-canvas" width="340" height="170"></canvas>
 
     <script src="app.js"></script>
 </body>
